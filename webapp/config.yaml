@@ -1,0 +1,6 @@
+configuration:
+  - path: /
+  - credential: hello
+    path: /foo
+  - credential: world
+    path: /bar
