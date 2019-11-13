@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM golang:alpine
 LABEL maintainer="Karen Almog <wrd4wrd@gmail.com>"
 
 WORKDIR /webapp
