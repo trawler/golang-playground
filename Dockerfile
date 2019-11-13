@@ -1,7 +1,7 @@
 FROM golang:alpine
 LABEL maintainer="Karen Almog <wrd4wrd@gmail.com>"
 
-WORKDIR /webapp
+WORKDIR /trawler
 COPY /webapp build/
 
 RUN cd build && go mod download && go build -o ../webapp && cp config.yaml ../
