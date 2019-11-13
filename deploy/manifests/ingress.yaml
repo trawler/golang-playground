@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: go-webapp
+  namespace: default
+spec:
+  rules:
+    - host: trawler.example.com
+      http:
+        paths:
+          - backend:
+              serviceName: go-webapp
+              servicePort: 8080
+            path: /

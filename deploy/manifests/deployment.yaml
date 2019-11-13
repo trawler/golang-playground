@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: go-webapp
+  name: go-webapp
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: go-webapp
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: go-webapp
+    spec:
+      containers:
+        - image: repo.treescale.com/trawler/golang-webapp:latest
+          imagePullPolicy: Always
+          name: golang-webap
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: repo.treescale.com
