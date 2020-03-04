@@ -6,7 +6,7 @@ jobs:
   build:
     docker:
       # specify the version
-      - image: golang:alpine
+      - image: alpine:3.7
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -22,5 +22,7 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
+      - run: echo "http://mirror.leaseweb.com/alpine/edge/testing" >> /etc/apk/repositories
+      - run: apk add --no-cache bash git openssh go musl-dev
       - run: go get -v -t -d ./...
       - run: go test -v ./...
