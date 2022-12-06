@@ -6,7 +6,7 @@ LABEL maintainer="Karen Almog <wrd4wrd@gmail.com>"
 WORKDIR /trawler
 COPY /webapp build/
 
-RUN cd build && go mod download && go build -o ../webapp && cp config.yaml ../
+RUN cd build && go mod download && go build -o ../webapp
 RUN rm -rf build
 
 # Remove symlink to /bin/sh

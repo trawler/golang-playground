@@ -27,4 +27,10 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+          volumeMounts:
+            - mountPath: /trawler
+              name: auth-config
+              items:
+                - key: config.yaml
+                  path: /trawler/config.yaml
       dnsPolicy: ClusterFirst
