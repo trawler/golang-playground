@@ -9,10 +9,10 @@ import (
 
 // Page comment
 type Page struct {
-	Title      string
-	Body       []byte
-	Path       string `json:",inline" yaml:"path,omitempty"`
-	Credential string `json:",inline" yaml:"credential,omitempty"`
+	Title string
+	Body  []byte
+	Path  string `json:",inline" yaml:"path,omitempty"`
+	User  string `json:",inline" yaml:"user,omitempty"`
 }
 
 // SiteConfig comment
