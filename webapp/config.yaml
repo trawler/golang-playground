@@ -1,5 +1,5 @@
 configuration:
-  - credential: hello
+  - user: hello
     path: /foo
-  - credential: world
+  - user: world
     path: /bar

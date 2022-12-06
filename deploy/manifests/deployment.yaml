@@ -6,7 +6,7 @@ metadata:
   name: go-webapp
   namespace: default
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: go-webapp
@@ -28,9 +28,11 @@ spec:
             - containerPort: 8080
               protocol: TCP
           volumeMounts:
-            - mountPath: /trawler
-              name: auth-config
-              items:
-                - key: config.yaml
-                  path: /trawler/config.yaml
+          - name: config-vol
+            mountPath: /trawler/config.yaml
+            subPath: config.yaml
+      volumes:
+        - name:  config-vol
+          configMap:
+            name: auth-config
       dnsPolicy: ClusterFirst

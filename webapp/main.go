@@ -22,19 +22,19 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	listenPort := "8080"
 
-	fmt.Printf("serving pages on addressport %s...\n", listenPort)
+	fmt.Printf("serving pages on port %s...\n", listenPort)
 	http.HandleFunc("/", handler)
 
 	// Parse config file
 	site, err := parseYamlFile("./config.yaml")
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("Error parsing config file: %s", err)
 	}
 
 	for _, site := range site.Site {
-		if site.Credential != "" {
+		if site.User != "" {
 			// Use SimpleBasicAuth from: https://girishjoshi.io/post/implementing-http-basic-authentication-in-golang/
-			authHandler := httpauth.SimpleBasicAuth(site.Credential, "password")(http.HandlerFunc(handler))
+			authHandler := httpauth.SimpleBasicAuth(site.User, "password")(http.HandlerFunc(handler))
 			http.Handle(site.Path, authHandler)
 		}
 	}
