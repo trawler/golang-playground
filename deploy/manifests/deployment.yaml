@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -21,12 +21,10 @@ spec:
         app: go-webapp
     spec:
       containers:
-        - image: repo.treescale.com/trawler/golang-webapp:latest
+        - image: katnip/go-webapp:latest
           imagePullPolicy: Always
-          name: golang-webap
+          name: golang-webapp
           ports:
             - containerPort: 8080
               protocol: TCP
       dnsPolicy: ClusterFirst
-      imagePullSecrets:
-        - name: repo.treescale.com
