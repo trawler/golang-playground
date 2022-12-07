@@ -1,0 +1,2 @@
+deploy/helm/trawler-webapp/templates/tests/* linguist-generated
+*.tpl linguist-generated
